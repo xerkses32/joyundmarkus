@@ -1,0 +1,364 @@
+---
+alwaysApply: true
+---
+
+# Design System Rules - Joy & Markus Website
+
+This document defines the design system rules for integrating Figma designs into the codebase using the Figma Model Context Protocol (MCP).
+
+## Design Token Definitions
+
+### Typography System
+
+The project uses the following font families as defined in the Figma design:
+
+#### Font Families
+
+- **Darker Grotesque**: Used for headings and navigation
+  - Weights: Bold, Black, ExtraBold
+  - Usage: Hero text, section headings, navigation items
+  - Example: `font-['Darker_Grotesque:Black',sans-serif] font-black`
+
+- **Libre Baskerville**: Used for call-to-action buttons and accent text
+  - Weights: Variable Font (400-700) with Italic variant
+  - Usage: "Listen!" buttons, "OUT NOW" badges, form buttons
+  - Example: `font-['Libre_Baskerville',serif] font-bold italic`
+
+- **Geist Mono**: Used for body text and lyrics
+  - Weights: Regular, Medium
+  - Usage: Song lyrics, descriptions, form labels
+  - Example: `font-['Geist_Mono:Regular',sans-serif] font-normal`
+
+- **Andale Mono**: Used for secondary text like citations
+  - Weight: Regular
+  - Usage: Bible verse references, metadata
+  - Example: `font-['Andale_Mono:Regular',sans-serif]`
+
+#### Typography Scale
+
+Based on Figma design analysis:
+- Hero/Logo: `text-[50px]` (50px)
+- Section Headings: `text-[70px]` (70px)
+- Large Headings: `text-[30px]` (30px)
+- Body Text: `text-[20px]` (20px)
+- Navigation: `text-[20px]` (20px)
+- Small Text/Lyrics: `text-[10px]` (10px)
+- Button Text: `text-[20px]` (20px)
+- Badge Text: `text-[15px]` or `text-[24.828px]` (15px-25px)
+
+### Color System
+
+Colors are defined as CSS variables in `app/globals.css` and can be extended with Figma design colors:
+
+#### Primary Colors (from Figma)
+
+- **Background**: `#ecebe6` - Main background color
+- **Text Primary**: `#000000` - Black for main text
+- **Accent Yellow**: `#fff239` - Used for CTA buttons and badges
+- **Dark Gray**: `#4a4a4a` - Used for "Listen!" buttons and dark elements
+- **White**: `#ffffff` - Used for cards and form inputs
+
+#### Border Colors
+
+- Light borders: `#cfcfcf`, `#bcbcbc`, `#bebebe`
+- Medium borders: `#b1b1b1`, `#848484`
+
+#### Implementation
+
+```css
+:root {
+  --color-background-cream: #ecebe6;
+  --color-accent-yellow: #fff239;
+  --color-button-dark: #4a4a4a;
+  --color-border-light: #cfcfcf;
+  --color-border-medium: #b1b1b1;
+}
+```
+
+Use Tailwind classes with these colors:
+```tsx
+className="bg-[#ecebe6]" // Background
+className="bg-[#fff239]" // Accent buttons
+className="bg-[#4a4a4a]" // Dark buttons
+className="border-[#cfcfcf]" // Borders
+```
+
+### Spacing System
+
+Follow Tailwind's spacing scale, but note these patterns from Figma:
+- Gap between elements: `gap-[10px]`, `gap-[20px]`, `gap-[30px]`, `gap-[40px]`, `gap-[80px]`, `gap-[100px]`
+- Padding: `p-[10px]`, `p-[20px]`, `px-[45px]`, `py-[20px]`
+- Consistent gaps in flex layouts: Usually `gap-[10px]` or `gap-[20px]`
+
+### Border Radius
+
+- Small radius: `rounded-[5px]` (buttons, badges)
+- Medium radius: `rounded-[10px]` (cards, forms)
+- Large radius: `rounded-[15px]` (form inputs)
+- Circular: `rounded-[100px]` (navigation bar)
+
+## Figma Integration Workflow
+
+### Using Figma MCP Tools
+
+When integrating Figma designs:
+
+1. **Get Design Context**
+   - Use `mcp_Figma_Desktop_get_design_context` with the node ID from Figma URL
+   - Extract node ID from URL: `?node-id=897-608` → `nodeId="897:608"` (replace `-` with `:`)
+   - Always specify `clientLanguages: "typescript,javascript"` and `clientFrameworks: "react,nextjs"`
+
+2. **Convert Generated Code**
+   - The Figma MCP generates React code with inline styles and Tailwind classes
+   - Convert to match project conventions:
+     - Use `function` keyword (not arrow functions for components)
+     - Apply kebab-case for file names
+     - Use PascalCase for component names
+     - Extract inline styles to Tailwind classes where possible
+     - Use `cn()` utility from `@/lib/utils` for conditional classes
+
+3. **Handle Images**
+   - Images from Figma are served from localhost during development
+   - For production, download and store in `public/` directory
+   - Use Next.js `Image` component for optimization:
+     ```tsx
+     import Image from 'next/image'
+     <Image src="/path/to/image.png" alt="Description" width={265} height={265} />
+     ```
+
+4. **Component Structure**
+   - Break down large Figma components into smaller reusable components
+   - Store in `components/` directory with kebab-case naming
+   - Example: `components/listen-button.tsx`, `components/navigation.tsx`
+
+## Component Patterns
+
+### Button Components
+
+Based on Figma design patterns:
+
+**Primary CTA Button (Yellow)**:
+```tsx
+<button className="bg-[#fff239] px-[10px] py-[5px] rounded-[10px]">
+  <span className="font-['Libre_Baskerville',serif] font-bold italic text-[20px] text-black">
+    Button Text
+  </span>
+</button>
+```
+
+**Dark Button (Listen!)**:
+```tsx
+<button className="bg-[#4a4a4a] flex gap-[9px] items-center px-[10px] py-[5px] rounded-[5px]">
+  <span className="font-['Libre_Baskerville',serif] font-bold italic text-[15px] text-white">
+    Listen!
+  </span>
+  {/* Arrow icon */}
+</button>
+```
+
+### Navigation Component
+
+```tsx
+<nav className="bg-[#ecebe6] flex gap-[100px] items-start justify-center px-[30px] py-[10px] rounded-[100px]">
+  <a className="font-['Darker_Grotesque:Black',sans-serif] font-black text-[20px] text-black">
+    HOME
+  </a>
+  {/* More nav items */}
+</nav>
+```
+
+### Section Headings
+
+```tsx
+<h2 className="font-['Darker_Grotesque:Black',sans-serif] font-black text-[70px] text-black">
+  SECTION TITLE
+</h2>
+```
+
+### Text Blocks (Lyrics/Descriptions)
+
+```tsx
+<div className="font-['Geist_Mono:Regular',sans-serif] font-normal text-[10px] text-black leading-[13px]">
+  <p className="mb-0">Line 1</p>
+  <p className="mb-0">Line 2</p>
+  {/* More lines */}
+</div>
+```
+
+## Asset Management
+
+### Images
+
+- Store images in `public/` directory
+- Use Next.js `Image` component for optimization
+- Maintain aspect ratios from Figma design
+- Use `object-cover` or `object-contain` as appropriate
+
+### Icons
+
+- Use Lucide React icons (as configured in Shadcn)
+- For custom SVG icons from Figma, store in `public/icons/`
+- Reference pattern: `<img src="/icons/icon-name.svg" alt="Description" />`
+
+### Fonts
+
+- Fonts should be loaded via `next/font` or CSS `@import`
+- Store custom fonts in `public/fonts/` if needed
+- Define font families in CSS variables for consistency
+
+## Styling Guidelines
+
+### Tailwind CSS Usage
+
+- Use utility classes for styling
+- Prefer Tailwind classes over inline styles
+- Use `cn()` utility for conditional classes
+- Follow mobile-first responsive approach
+- Use arbitrary values `[value]` when exact Figma values are needed
+
+### CSS Variables
+
+- Define design tokens as CSS variables in `app/globals.css`
+- Use variables for colors, spacing, and other tokens
+- Maintain consistency with Figma design values
+
+### Responsive Design
+
+- Design is mobile-first
+- Use Tailwind breakpoints: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`
+- Test on multiple viewport sizes
+- Maintain design proportions across breakpoints
+
+## Component Organization
+
+### Directory Structure
+
+```
+components/
+  ui/              # Shadcn UI components
+  layout/          # Layout components (navigation, footer)
+  sections/        # Page sections (hero, music section)
+  buttons/         # Button variants
+  cards/           # Card components
+```
+
+### Naming Conventions
+
+- File names: kebab-case (e.g., `listen-button.tsx`)
+- Component names: PascalCase (e.g., `ListenButton`)
+- Props interfaces: PascalCase with `Props` suffix (e.g., `ListenButtonProps`)
+
+## TypeScript Integration
+
+### Component Props
+
+Always define interfaces for component props:
+
+```tsx
+interface ButtonProps {
+	children: React.ReactNode
+	onClick?: () => void
+	variant?: 'primary' | 'secondary'
+	className?: string
+}
+
+export function Button({ children, onClick, variant = 'primary', className }: ButtonProps) {
+	// Implementation
+}
+```
+
+### Type Safety
+
+- Use TypeScript strict mode
+- Define types for all design tokens
+- Use const assertions for fixed values
+- Prefer `interface` over `type` for object structures
+
+## Accessibility
+
+### Requirements
+
+- Use semantic HTML elements
+- Provide alt text for all images
+- Ensure proper heading hierarchy (h1 → h2 → h3)
+- Maintain accessible color contrast (WCAG AA minimum)
+- Include ARIA labels where needed
+- Support keyboard navigation
+
+### Implementation Examples
+
+```tsx
+<button
+	onClick={handleClick}
+	onKeyDown={handleKeyDown}
+	aria-label="Play audio"
+	tabIndex={0}
+	className="..."
+>
+	Content
+</button>
+```
+
+## Best Practices
+
+### Code Quality
+
+1. **Extract Reusable Components**: Don't duplicate code from Figma output
+2. **Use Design Tokens**: Reference CSS variables, not hardcoded values
+3. **Maintain Consistency**: Follow existing patterns in the codebase
+4. **Type Safety**: Always define TypeScript interfaces
+5. **Performance**: Use Next.js Image component, lazy loading where appropriate
+
+### Figma Workflow
+
+1. Get design context from Figma using MCP tools
+2. Analyze design tokens (colors, typography, spacing)
+3. Extract reusable patterns
+4. Create components following project conventions
+5. Test responsive behavior
+6. Verify accessibility
+7. Document any deviations from design
+
+### Maintenance
+
+- Update design tokens when Figma design changes
+- Keep design system rules synchronized with Figma
+- Document any custom extensions to the design system
+- Review and refactor generated code before committing
+
+## Example: Converting Figma Component
+
+```tsx
+// From Figma MCP output (simplified):
+<div className="bg-[#4a4a4a] content-stretch flex gap-[9px] items-center overflow-clip px-[10px] py-[5px] relative rounded-[5px] shrink-0">
+  <p className="font-['Libre_Baskerville',serif] font-bold italic leading-[normal] relative shrink-0 text-[15px] text-nowrap text-white">
+    Listen!
+  </p>
+</div>
+
+// Converted to reusable component:
+// components/listen-button.tsx
+interface ListenButtonProps {
+	onClick?: () => void
+}
+
+export function ListenButton({ onClick }: ListenButtonProps) {
+	return (
+		<button
+			onClick={onClick}
+			onKeyDown={(e) => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					onClick?.()
+				}
+			}}
+			className="bg-[#4a4a4a] flex gap-[9px] items-center px-[10px] py-[5px] rounded-[5px] hover:opacity-90 transition-opacity"
+			aria-label="Listen to song"
+		>
+			<span className="font-['Libre_Baskerville',serif] font-bold italic text-[15px] text-white">
+				Listen!
+			</span>
+			{/* Icon component */}
+		</button>
+	)
+}
+```

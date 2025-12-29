@@ -1,0 +1,28 @@
+/* Alternative: Google Fonts Implementation */
+/* Uncomment this and comment out @font-face declarations if using Google Fonts */
+
+/*
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700;800;900&family=Libre+Caslon+Text:ital,wght@1,700&display=swap');
+
+:root {
+	--background: #ecebe6;
+	--foreground: #000000;
+	--color-background-cream: #ecebe6;
+	--color-accent-yellow: #EA9010;
+	--color-button-dark: #4a4a4a;
+	--color-border-light: #cfcfcf;
+	--color-border-medium: #b1b1b1;
+
+	--font-darker-grotesque: 'Darker Grotesque', sans-serif;
+	--font-libre-caslon: 'Libre Caslon Text', serif;
+	--font-geist-mono: 'Geist Mono', monospace;
+	--font-andale-mono: 'Andale Mono', 'Courier New', monospace;
+}
+
+body {
+	background-color: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-geist-mono);
+}
+*/
+

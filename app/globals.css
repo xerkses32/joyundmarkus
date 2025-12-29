@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Face Declarations */
+/* Darker Grotesque - Headings and Navigation */
+/* Using Variable Font for all weights (more efficient) */
+@font-face {
+	font-family: 'Darker Grotesque';
+	font-weight: 300 900;
+	font-style: normal;
+	src: url('/fonts/DarkerGrotesque-VariableFont_wght.woff2') format('woff2');
+	font-display: swap;
+}
+
+/* Libre Baskerville - Buttons and Accent Text */
+/* Using Variable Fonts for all weights and styles (more efficient) */
+@font-face {
+	font-family: 'Libre Baskerville';
+	font-weight: 400 700;
+	font-style: normal;
+	src: url('/fonts/LibreBaskerville-VariableFont_wght.woff2') format('woff2');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Libre Baskerville';
+	font-weight: 400 700;
+	font-style: italic;
+	src: url('/fonts/LibreBaskerville-Italic-VariableFont_wght.woff2') format('woff2');
+	font-display: swap;
+}
+
+/* Geist Mono - Body Text and Lyrics */
+/* Using fonts from geist npm package (copied to public/fonts/) */
+@font-face {
+	font-family: 'Geist Mono';
+	font-weight: 400;
+	font-style: normal;
+	src: url('/fonts/GeistMono-Regular.woff2') format('woff2');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Geist Mono';
+	font-weight: 500;
+	font-style: normal;
+	src: url('/fonts/GeistMono-Medium.woff2') format('woff2');
+	font-display: swap;
+}
+
+/* Andale Mono - Secondary Text (System font fallback) */
+/* Andale Mono is typically available as a system font */
+
+:root {
+	--background: #ecebe6;
+	--foreground: #1C1C1C;
+	--color-background-cream: #ecebe6;
+	--color-accent-yellow: #E34A6F;
+	--color-button-dark: #4a4a4a;
+	--color-border-light: #cfcfcf;
+	--color-border-medium: #b1b1b1;
+
+	/* Font Family Variables */
+	--font-darker-grotesque: 'Darker Grotesque', sans-serif;
+	--font-libre-baskerville: 'Libre Baskerville', serif;
+	--font-geist-mono: 'Geist Mono', 'SF Mono', 'Monaco', 'Consolas', monospace;
+	--font-andale-mono: 'Andale Mono', 'Courier New', monospace;
+	
+	/* Letter Spacing */
+	--letter-spacing-darker-grotesque: 0.24em;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-geist-mono);
+}
+
+/* Darker Grotesque Letter Spacing */
+.font-darker-grotesque {
+	letter-spacing: var(--letter-spacing-darker-grotesque);
+}
+
+/* Grain Overlay */
+.grain-overlay {
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+	background-size: 200px 200px;
+	background-repeat: repeat;
+	mix-blend-mode: overlay;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
