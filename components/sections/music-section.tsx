@@ -127,7 +127,7 @@ export function MusicSection() {
 				Alles beugt sich um dich zu erhöhen
 			</p>
 			<p className="font-geist-mono font-normal text-[10px] text-[#1C1C1C] mb-4">
-				unsere Anbetung soll dich krönen Jesus
+				unsere Anbetung soll dich krönen, Jesus
 			</p>
 			<SpotifyButton href="https://open.spotify.com/intl-de/track/0snv4gtgkdzX02W50XJoja?si=906e2c3a8c664d48" />
 		</div>
@@ -166,7 +166,7 @@ export function MusicSection() {
 				Dein Blick auf mir soll Dir genügen
 			</p>
 			<p className="font-geist-mono font-normal text-[10px] text-[#1C1C1C] mb-4">
-				von dir gesehen von dir geliebt
+				von dir gesehen, von dir geliebt
 			</p>
 			<SpotifyButton href="https://open.spotify.com/intl-de/album/55byPJxCqKypfinzs7nJ7Y?si=p3ztdqaxS2iBdl32XIS8Ng" />
 		</div>
@@ -202,10 +202,10 @@ export function MusicSection() {
 	const fourthThreeColumnRightContent = (
 		<div className="flex flex-col items-center justify-center gap-2">
 			<p className="font-geist-mono font-normal text-[10px] text-[#1C1C1C]">
-				Ohne Liebe wär ich nichts als leeres geschwätz
+				Ohne Liebe wär ich nichts als leeres Geschwätz
 			</p>
 			<p className="font-geist-mono font-normal text-[10px] text-[#1C1C1C] mb-4">
-				als totes geräusch
+				als totes Geräusch
 			</p>
 			<SpotifyButton href="https://open.spotify.com/intl-de/album/5caK5M5jYjIIwBdjvPmGXA?si=VQqwh-CzTIGVtUi8jLgpfQ" />
 		</div>
@@ -326,7 +326,7 @@ export function MusicSection() {
 				Ein wunderbarer Gott bist DU
 			</p>
 			<p className="font-geist-mono font-normal text-[10px] text-[#1C1C1C]">
-				Ich sing zu Dir ich ruf Dir zu
+				Ich sing zu Dir, ich ruf Dir zu
 			</p>
 			<p className="font-geist-mono font-normal text-[10px] text-[#1C1C1C] mb-4">
 				Heilig schön und königlich
