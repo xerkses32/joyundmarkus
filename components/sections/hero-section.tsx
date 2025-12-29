@@ -101,7 +101,7 @@ export function HeroSection({ featuredSong }: HeroSectionProps) {
 			<div className="absolute h-full left-0 top-0 w-full z-10">
 				<div className="absolute inset-0 overflow-hidden pointer-events-none">
 					<img
-						src="/images/Joy-ausgeschnitten.png"
+						src="/images/JoyOverlay.png"
 						alt="Joy Fackler - Porträt"
 						className="absolute inset-0 w-full h-full object-cover"
 					/>
