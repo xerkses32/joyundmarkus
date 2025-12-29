@@ -107,6 +107,7 @@ export function HeroSection({ featuredSong }: HeroSectionProps) {
 						className="object-cover"
 						priority
 						sizes="100vw"
+						unoptimized
 					/>
 				</div>
 			</div>
