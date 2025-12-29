@@ -19,7 +19,7 @@ export function AboutSection({
 		'Joy ist eine leidenschaftliche Musikerin und Komponistin, die ihre Kreativität in den Dienst der Kirche stellt. Mit ihrer einzigartigen musikalischen Vision bringt sie zeitlose Botschaften in moderne Klangwelten.'
 
 	const defaultMarkusText =
-		'Markus ist Musiker und Komponist, der sich darauf konzentriert, Musik zu schaffen, die Menschen näher zu Gott bringt. Seine Arrangements verbinden Tradition mit Innovation und schaffen so eine tiefe und berührende musikalische Erfahrung.'
+		'Markus ist studierter katholischer Theologe, Musiker und Komponist, der Lobpreislieder für die Kirche schreibt. Mit seiner theologischen Ausbildung und musikalischen Leidenschaft verbindet er tiefe Glaubensinhalte mit berührenden Melodien. Regelmäßig ist er als Sprecher auf Veranstaltungen eingeladen, wo er seine Vision von Musik teilt, die Menschen näher zu Gott bringt.'
 
 	return (
 		<div className="flex flex-col items-center w-full">

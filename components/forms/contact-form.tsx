@@ -140,7 +140,7 @@ export function ContactForm({}: ContactFormProps) {
 			<div className="h-0 relative w-full">
 				<div className="absolute inset-[-1px_0_0_0]">
 					<img
-						src="http://localhost:3845/assets/31c32c960d975b5b578e47894b63809ec773652b.svg"
+						src="/icons/divider-line.svg"
 						alt="Dekorativer Trennstrich"
 						className="block max-w-none size-full"
 					/>
@@ -193,7 +193,7 @@ export function ContactForm({}: ContactFormProps) {
 			<div className="h-0 relative w-full">
 				<div className="absolute inset-[-1px_0_0_0]">
 					<img
-						src="http://localhost:3845/assets/31c32c960d975b5b578e47894b63809ec773652b.svg"
+						src="/icons/divider-line.svg"
 						alt="Dekorativer Trennstrich"
 						className="block max-w-none size-full"
 					/>

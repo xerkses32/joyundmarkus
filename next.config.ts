@@ -1,16 +1,7 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-	images: {
-		remotePatterns: [
-			{
-				protocol: 'http',
-				hostname: 'localhost',
-				port: '3845',
-				pathname: '/assets/**',
-			},
-		],
-	},
+	// Localhost remotePatterns entfernt - nicht mehr benötigt für Production
 }
 
 export default nextConfig
