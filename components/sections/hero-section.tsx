@@ -77,6 +77,7 @@ export function HeroSection({ featuredSong }: HeroSectionProps) {
 						fill
 						className="object-cover grayscale"
 						priority
+						sizes="100vw"
 					/>
 				</div>
 			</div>
