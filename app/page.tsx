@@ -6,7 +6,8 @@ import { Footer } from '@/components/layout/footer'
 import { HeroSection } from '@/components/sections/hero-section'
 import { MusicSection } from '@/components/sections/music-section'
 import { ChordsheetsSection } from '@/components/sections/chordsheets-section'
-import { AboutSection } from '@/components/sections/about-section'
+// import { AboutSection } from '@/components/sections/about-section'
+import { StreamingPlatformsWithBackground } from '@/components/sections/streaming-platforms-with-background'
 import { ContactSection } from '@/components/sections/contact-section'
 import { YouTubeSliderSection } from '@/components/sections/youtube-slider-section'
 import { CookieBanner } from '@/components/ui/cookie-banner'
@@ -38,9 +39,11 @@ export default function Home() {
 				<div id="chordsheets">
 					<ChordsheetsSection chordsheets={chordsheets} />
 				</div>
-				<div id="about">
+				{/* Streaming Platform Icons */}
+				<StreamingPlatformsWithBackground />
+				{/* <div id="about">
 					<AboutSection />
-				</div>
+				</div> */}
 				<YouTubeSliderSection
 					videos={[
 						'Na_t_Yn6JuQ',
