@@ -100,14 +100,10 @@ export function HeroSection({ featuredSong }: HeroSectionProps) {
 			{/* Joy ausgeschnitten overlay */}
 			<div className="absolute h-full left-0 top-0 w-full z-10">
 				<div className="absolute inset-0 overflow-hidden pointer-events-none">
-					<Image
+					<img
 						src="/images/Joy-ausgeschnitten.png"
 						alt="Joy Fackler - Porträt"
-						fill
-						className="object-cover"
-						priority
-						sizes="100vw"
-						unoptimized
+						className="absolute inset-0 w-full h-full object-cover"
 					/>
 				</div>
 			</div>
