@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://joyundmarkus.de'
 const siteName = 'Joy & Markus'
 const defaultDescription =
-	'Joy & Markus - Christliche Musik, die Menschen näher zu Gott bringt. Entdecke unsere Lieder, Chordsheets und mehr auf Spotify, Apple Music, YouTube und Amazon Music.'
+	'Lobpreis Lieder in deutscher Sprache'
 
 export const defaultMetadata: Metadata = {
 	metadataBase: new URL(siteUrl),
