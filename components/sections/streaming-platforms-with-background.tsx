@@ -40,8 +40,8 @@ export function StreamingPlatformsWithBackground() {
 				// Berechne Padding basierend auf Bildgröße und Viewport
 				const isMobile = viewportWidth < 768
 				// Mobile: größeres Padding, Desktop: 50% der Bildgröße
-				const paddingMultiplier = isMobile ? 0.7 : 0.5
-				const minPadding = isMobile ? 100 : 60
+				const paddingMultiplier = isMobile ? 1.4 : 0.5
+				const minPadding = isMobile ? 200 : 60
 				const newPadding = Math.max(newImageSize * paddingMultiplier, minPadding)
 				setContainerPadding(newPadding)
 			}
