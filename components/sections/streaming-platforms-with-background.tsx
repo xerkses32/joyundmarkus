@@ -7,6 +7,7 @@ import { StreamingPlatforms } from '@/components/ui/streaming-platforms'
 export function StreamingPlatformsWithBackground() {
 	const logosRef = useRef<HTMLDivElement>(null)
 	const [imageSize, setImageSize] = useState(400)
+	const [containerPadding, setContainerPadding] = useState(60)
 
 	useEffect(() => {
 		const updateImageSize = () => {
@@ -33,8 +34,16 @@ export function StreamingPlatformsWithBackground() {
 				// Keine Viewport-Begrenzung - das Bild soll die Sections pushen
 				// Der Container-Spacing wird angepasst, um Platz zu schaffen
 				const finalSize = diameter
+				const newImageSize = Math.max(finalSize, 200)
+				setImageSize(newImageSize)
 				
-				setImageSize(Math.max(finalSize, 200))
+				// Berechne Padding basierend auf Bildgröße und Viewport
+				const isMobile = viewportWidth < 768
+				// Mobile: größeres Padding, Desktop: 50% der Bildgröße
+				const paddingMultiplier = isMobile ? 0.7 : 0.5
+				const minPadding = isMobile ? 100 : 60
+				const newPadding = Math.max(newImageSize * paddingMultiplier, minPadding)
+				setContainerPadding(newPadding)
 			}
 		}
 
@@ -46,9 +55,6 @@ export function StreamingPlatformsWithBackground() {
 			window.removeEventListener('resize', updateImageSize)
 		}
 	}, [])
-
-	// Berechne Padding basierend auf Bildgröße (50% der Bildgröße oben und unten)
-	const containerPadding = Math.max(imageSize * 0.5, 60)
 
 	return (
 		<div 
