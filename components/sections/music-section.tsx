@@ -27,13 +27,13 @@ export function MusicSection() {
 
 	const firstTwoColumnRightContent = (
 		<div className="flex items-center justify-center">
-			<div className="relative w-[404px] h-[400px]">
+			<div className="relative w-[265px] h-[265px] md:w-[404px] md:h-[400px]">
 				<Image
 					src="/images/Überwunden.png"
 					alt="Überwunden"
 					fill
 					className="object-cover"
-					sizes="404px"
+					sizes="(max-width: 768px) 265px, 404px"
 				/>
 			</div>
 		</div>
@@ -58,13 +58,13 @@ export function MusicSection() {
 
 	const secondTwoColumnRightContent = (
 		<div className="flex items-center justify-center">
-			<div className="relative w-[404px] h-[400px]">
+			<div className="relative w-[265px] h-[265px] md:w-[404px] md:h-[400px]">
 				<Image
 					src="/images/nah zu sein.jpeg"
 					alt="Nah zu sein Cover"
 					fill
 					className="object-cover"
-					sizes="404px"
+					sizes="(max-width: 768px) 265px, 404px"
 				/>
 			</div>
 		</div>
