@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
+import { SupportButton } from '@/components/ui/support-button'
 
 interface HeroSectionProps {
 	featuredSong?: {
@@ -131,15 +132,20 @@ export function HeroSection({ featuredSong }: HeroSectionProps) {
 							sizes="(max-width: 768px) 150px, (max-width: 1024px) 200px, 265px"
 						/>
 					</div>
-					<a
-						href="https://open.spotify.com/intl-de/track/0snv4gtgkdzX02W50XJoja?si=906e2c3a8c664d48"
-						aria-label="Alles Beugt Sich auf Spotify anhören"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="inline-block hover:opacity-90 transition-opacity"
-					>
-					<Badge className="scale-75 md:scale-75 lg:scale-80">OUT NOW</Badge>
-					</a>
+					<div className="flex gap-3 md:gap-4 items-center justify-center flex-wrap">
+						<a
+							href="https://open.spotify.com/intl-de/track/0snv4gtgkdzX02W50XJoja?si=906e2c3a8c664d48"
+							aria-label="Alles Beugt Sich auf Spotify anhören"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="inline-block hover:opacity-90 transition-opacity"
+						>
+							<Badge className="scale-75 md:scale-75 lg:scale-80">OUT NOW</Badge>
+						</a>
+						<div className="scale-75 md:scale-75 lg:scale-80">
+							<SupportButton />
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

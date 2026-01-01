@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { StreamingPlatforms } from '@/components/ui/streaming-platforms'
+import { SupportButton } from '@/components/ui/support-button'
 
 interface FooterProps {}
 
@@ -14,6 +15,9 @@ export function Footer({}: FooterProps) {
 							JOY&MARKUS
 						</h2>
 						<StreamingPlatforms size="small" />
+						<div className="flex items-center justify-start scale-50 md:scale-60 lg:scale-75 origin-left">
+							<SupportButton />
+						</div>
 					</div>
 
 					{/* Right Side: Navigation Links */}

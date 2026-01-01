@@ -12,6 +12,7 @@ import { ContactSection } from '@/components/sections/contact-section'
 import { YouTubeSliderSection } from '@/components/sections/youtube-slider-section'
 import { CookieBanner } from '@/components/ui/cookie-banner'
 import { HomepageStructuredData } from '@/components/seo/homepage-structured-data'
+import { SupportButton } from '@/components/ui/support-button'
 import type { ChordSheet } from '@/types/chordsheet'
 
 export default function Home() {

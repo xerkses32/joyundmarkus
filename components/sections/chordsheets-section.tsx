@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { SectionHeading } from '@/components/ui/section-heading'
+import { SupportButton } from '@/components/ui/support-button'
 import type { ChordSheet } from '@/types/chordsheet'
 
 interface ChordsheetsSectionProps {
@@ -109,6 +110,19 @@ export function ChordsheetsSection({ chordsheets }: ChordsheetsSectionProps) {
 							))}
 						</div>
 					</div>
+
+					{/* Support Button - Centered unter Table auf Background */}
+					<div className="absolute flex items-center justify-center left-1/2 top-[650px] md:top-[850px] lg:top-[1000px] -translate-x-1/2 z-10">
+						<div className="scale-75 md:scale-75 lg:scale-80">
+							<SupportButton />
+						</div>
+					</div>
+				</div>
+			</div>
+			{/* Support Button für Mobile */}
+			<div className="relative z-20 flex items-center justify-center pb-4 md:hidden pt-4">
+				<div className="scale-75">
+					<SupportButton />
 				</div>
 			</div>
 		</div>

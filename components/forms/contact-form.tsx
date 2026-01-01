@@ -78,8 +78,8 @@ export function ContactForm({}: ContactFormProps) {
 
 			if (response.ok) {
 				setSubmitStatus('success')
-				setEmail('')
-				setMessage('')
+		setEmail('')
+		setMessage('')
 				setPrivacyAccepted(false)
 				// Reset success message after 5 seconds
 				setTimeout(() => setSubmitStatus('idle'), 5000)

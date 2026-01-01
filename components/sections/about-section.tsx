@@ -49,7 +49,7 @@ export function AboutSection({
 			{/* Streaming Platform Logos */}
 			<div className="pt-16 md:pt-24 lg:pt-[380px] pb-16 md:pb-24 lg:pb-[380px] w-full">
 				<StreamingPlatformsWithBackground />
-			</div>
+				</div>
 		</div>
 	)
 }
