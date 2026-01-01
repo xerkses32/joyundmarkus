@@ -1,3 +1,5 @@
+'use client'
+
 import { SectionHeading } from '@/components/ui/section-heading'
 import { ThreeColumnLayout } from '@/components/layout/three-column-layout'
 import { TwoColumnLayout } from '@/components/layout/two-column-layout'
@@ -5,6 +7,8 @@ import { MusicBadge } from '@/components/ui/music-badge'
 import { StreamingPlatforms } from '@/components/ui/streaming-platforms'
 import { SpotifyButton } from '@/components/ui/spotify-button'
 import { PurchaseButton } from '@/components/ui/purchase-button'
+import { RevealSection } from '@/components/animations/reveal-section'
+import { AlbumCover } from '@/components/animations/album-cover'
 import Image from 'next/image'
 
 export function MusicSection() {
@@ -27,15 +31,12 @@ export function MusicSection() {
 
 	const firstTwoColumnRightContent = (
 		<div className="flex items-center justify-center">
-			<div className="relative w-[265px] h-[265px] md:w-[404px] md:h-[400px]">
-				<Image
-					src="/images/Überwunden.png"
-					alt="Überwunden"
-					fill
-					className="object-cover"
-					sizes="(max-width: 768px) 265px, 404px"
-				/>
-			</div>
+			<AlbumCover
+				src="/images/Überwunden.png"
+				alt="Überwunden"
+				className="w-[265px] h-[265px] md:w-[404px] md:h-[400px]"
+				sizes="(max-width: 768px) 265px, 404px"
+			/>
 		</div>
 	)
 
@@ -58,15 +59,12 @@ export function MusicSection() {
 
 	const secondTwoColumnRightContent = (
 		<div className="flex items-center justify-center">
-			<div className="relative w-[265px] h-[265px] md:w-[404px] md:h-[400px]">
-				<Image
-					src="/images/nah zu sein.jpeg"
-					alt="Nah zu sein Cover"
-					fill
-					className="object-cover"
-					sizes="(max-width: 768px) 265px, 404px"
-				/>
-			</div>
+			<AlbumCover
+				src="/images/nah zu sein.jpeg"
+				alt="Nah zu sein Cover"
+				className="w-[265px] h-[265px] md:w-[404px] md:h-[400px]"
+				sizes="(max-width: 768px) 265px, 404px"
+			/>
 		</div>
 	)
 
@@ -109,15 +107,12 @@ export function MusicSection() {
 
 	const secondThreeColumnMiddleContent = (
 		<div className="flex items-center justify-center">
-			<div className="relative w-[265px] h-[265px]">
-				<Image
-					src="/images/Alles beugt sich cover.png"
-					alt="Alles Beugt Sich"
-					fill
-					className="object-cover"
-					sizes="265px"
-				/>
-			</div>
+			<AlbumCover
+				src="/images/Alles beugt sich cover.png"
+				alt="Alles Beugt Sich"
+				className="w-[265px] h-[265px]"
+				sizes="265px"
+			/>
 		</div>
 	)
 
@@ -148,15 +143,12 @@ export function MusicSection() {
 
 	const thirdThreeColumnMiddleContent = (
 		<div className="flex items-center justify-center">
-			<div className="relative w-[265px] h-[265px]">
-				<Image
-					src="/images/Abba.png"
-					alt="Abba (reimagined)"
-					fill
-					className="object-cover"
-					sizes="265px"
-				/>
-			</div>
+			<AlbumCover
+				src="/images/Abba.png"
+				alt="Abba (reimagined)"
+				className="w-[265px] h-[265px]"
+				sizes="265px"
+			/>
 		</div>
 	)
 
@@ -187,15 +179,12 @@ export function MusicSection() {
 
 	const fourthThreeColumnMiddleContent = (
 		<div className="flex items-center justify-center">
-			<div className="relative w-[265px] h-[265px]">
-				<Image
-					src="/images/Mein Lohn Bist Du.png"
-					alt="Mein Lohn Bist Du"
-					fill
-					className="object-cover"
-					sizes="265px"
-				/>
-			</div>
+			<AlbumCover
+				src="/images/Mein Lohn Bist Du.png"
+				alt="Mein Lohn Bist Du"
+				className="w-[265px] h-[265px]"
+				sizes="265px"
+			/>
 		</div>
 	)
 
@@ -226,15 +215,12 @@ export function MusicSection() {
 
 	const fifthThreeColumnMiddleContent = (
 		<div className="flex items-center justify-center">
-			<div className="relative w-[265px] h-[265px]">
-				<Image
-					src="/images/Im zelt des Herrn.png"
-					alt="Im Zelt des Herrn"
-					fill
-					className="object-cover"
-					sizes="265px"
-				/>
-			</div>
+			<AlbumCover
+				src="/images/Im zelt des Herrn.png"
+				alt="Im Zelt des Herrn"
+				className="w-[265px] h-[265px]"
+				sizes="265px"
+			/>
 		</div>
 	)
 
@@ -308,15 +294,12 @@ export function MusicSection() {
 
 	const firstThreeColumnMiddleContent = (
 		<div className="flex items-center justify-center">
-			<div className="relative w-[265px] h-[265px]">
-				<Image
-					src="/images/Wunderbarer Gott.png"
-					alt="Wunderbarer Gott"
-					fill
-					className="object-cover"
-					sizes="265px"
-				/>
-			</div>
+			<AlbumCover
+				src="/images/Wunderbarer Gott.png"
+				alt="Wunderbarer Gott"
+				className="w-[265px] h-[265px]"
+				sizes="265px"
+			/>
 		</div>
 	)
 
@@ -337,57 +320,63 @@ export function MusicSection() {
 
 	return (
 		<div className="flex flex-col items-center overflow-clip py-8 md:py-12 lg:py-[59px] w-full">
-			<div className="flex flex-col items-center justify-center pb-16 md:pb-24 lg:pb-[380px] pt-16 md:pt-24 lg:pt-[380px] px-0 w-full">
-				<SectionHeading>MUSIK</SectionHeading>
-				{/* Streaming Platform Logos */}
-				<div className="pt-4 md:pt-5 lg:pt-6 w-full">
-					<StreamingPlatforms size="large" />
+			<RevealSection>
+				<div className="flex flex-col items-center justify-center pb-16 md:pb-24 lg:pb-[380px] pt-16 md:pt-24 lg:pt-[380px] px-0 w-full">
+					<SectionHeading>MUSIK</SectionHeading>
+					{/* Streaming Platform Logos */}
+					<div className="pt-4 md:pt-5 lg:pt-6 w-full">
+						<StreamingPlatforms size="large" />
+					</div>
 				</div>
-			</div>
+			</RevealSection>
 			<div className="flex flex-col items-stretch w-full gap-0">
-				{/* First 3-Column Layout - Wunderbarer Gott */}
-				<ThreeColumnLayout
-					leftContent={firstThreeColumnLeftContent}
-					middleContent={firstThreeColumnMiddleContent}
-					rightContent={firstThreeColumnRightContent}
-				/>
-				{/* Second 3-Column Layout - Alles Beugt Sich */}
-				<ThreeColumnLayout
-					leftContent={secondThreeColumnLeftContent}
-					middleContent={secondThreeColumnMiddleContent}
-					rightContent={secondThreeColumnRightContent}
-				/>
-				{/* Third 3-Column Layout - Abba (reimagined) */}
-				<ThreeColumnLayout
-					leftContent={thirdThreeColumnLeftContent}
-					middleContent={thirdThreeColumnMiddleContent}
-					rightContent={thirdThreeColumnRightContent}
-				/>
-
-				{/* First 2-Column Layout - Überwunden */}
-				<TwoColumnLayout
-					leftContent={firstTwoColumnLeftContent}
-					rightContent={firstTwoColumnRightContent}
-				/>
-
-				{/* Fourth 3-Column Layout - Mein Lohn Bist Du */}
-				<ThreeColumnLayout
-					leftContent={fourthThreeColumnLeftContent}
-					middleContent={fourthThreeColumnMiddleContent}
-					rightContent={fourthThreeColumnRightContent}
-				/>
-				{/* Fifth 3-Column Layout - Im Zelt des Herrn */}
-				<ThreeColumnLayout
-					leftContent={fifthThreeColumnLeftContent}
-					middleContent={fifthThreeColumnMiddleContent}
-					rightContent={fifthThreeColumnRightContent}
-				/>
-
-				{/* Second 2-Column Layout - Nah zu sein */}
-				<TwoColumnLayout
-					leftContent={secondTwoColumnLeftContent}
-					rightContent={secondTwoColumnRightContent}
-				/>
+				<RevealSection delay={0.1}>
+					<ThreeColumnLayout
+						leftContent={firstThreeColumnLeftContent}
+						middleContent={firstThreeColumnMiddleContent}
+						rightContent={firstThreeColumnRightContent}
+					/>
+				</RevealSection>
+				<RevealSection delay={0.2}>
+					<ThreeColumnLayout
+						leftContent={secondThreeColumnLeftContent}
+						middleContent={secondThreeColumnMiddleContent}
+						rightContent={secondThreeColumnRightContent}
+					/>
+				</RevealSection>
+				<RevealSection delay={0.3}>
+					<ThreeColumnLayout
+						leftContent={thirdThreeColumnLeftContent}
+						middleContent={thirdThreeColumnMiddleContent}
+						rightContent={thirdThreeColumnRightContent}
+					/>
+				</RevealSection>
+				<RevealSection delay={0.4}>
+					<TwoColumnLayout
+						leftContent={firstTwoColumnLeftContent}
+						rightContent={firstTwoColumnRightContent}
+					/>
+				</RevealSection>
+				<RevealSection delay={0.5}>
+					<ThreeColumnLayout
+						leftContent={fourthThreeColumnLeftContent}
+						middleContent={fourthThreeColumnMiddleContent}
+						rightContent={fourthThreeColumnRightContent}
+					/>
+				</RevealSection>
+				<RevealSection delay={0.6}>
+					<ThreeColumnLayout
+						leftContent={fifthThreeColumnLeftContent}
+						middleContent={fifthThreeColumnMiddleContent}
+						rightContent={fifthThreeColumnRightContent}
+					/>
+				</RevealSection>
+				<RevealSection delay={0.7}>
+					<TwoColumnLayout
+						leftContent={secondTwoColumnLeftContent}
+						rightContent={secondTwoColumnRightContent}
+					/>
+				</RevealSection>
 			</div>
 		</div>
 	)

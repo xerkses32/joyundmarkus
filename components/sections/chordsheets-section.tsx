@@ -1,6 +1,10 @@
+'use client'
+
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { SupportButton } from '@/components/ui/support-button'
+import { RevealSection } from '@/components/animations/reveal-section'
 import type { ChordSheet } from '@/types/chordsheet'
 
 interface ChordsheetsSectionProps {
@@ -25,9 +29,11 @@ export function ChordsheetsSection({ chordsheets }: ChordsheetsSectionProps) {
 			</div>
 
 			{/* Section Heading */}
-			<div className="relative z-20 flex items-center justify-center px-0 pb-4 md:pb-5 lg:pb-[20px] pt-16 md:pt-24 lg:pt-[380px] w-full">
-				<SectionHeading>CHORDSHEETS</SectionHeading>
-			</div>
+			<RevealSection>
+				<div className="relative z-20 flex items-center justify-center px-0 pb-4 md:pb-5 lg:pb-[20px] pt-16 md:pt-24 lg:pt-[380px] w-full">
+					<SectionHeading>CHORDSHEETS</SectionHeading>
+				</div>
+			</RevealSection>
 
 			{/* Mobile: Simple List with Glass Effect */}
 			<div className="relative z-20 md:hidden w-full px-2 pb-8">
@@ -89,7 +95,15 @@ export function ChordsheetsSection({ chordsheets }: ChordsheetsSectionProps) {
 
 							{/* Table Rows */}
 							{chordsheets.map((sheet, index) => (
-								<div key={sheet.id} className="w-full">
+								<motion.div
+									key={sheet.id}
+									initial={{ opacity: 0, y: 10 }}
+									whileInView={{ opacity: 1, y: 0 }}
+									viewport={{ once: true }}
+									transition={{ duration: 0.3, delay: index * 0.1 }}
+									whileHover={{ y: -2 }}
+									className="w-full"
+								>
 									<div className="flex font-geist-mono font-normal gap-4 md:gap-6 lg:gap-[40px] items-start leading-[normal] text-[14px] md:text-[16px] lg:text-[20px] text-[#1C1C1C] w-full">
 										<p className="flex-1 min-w-0 max-w-[50%] md:max-w-[55%] lg:max-w-[60%] break-words">{sheet.name}</p>
 										<p className="text-center w-14 md:w-[72px] lg:w-[80px] shrink-0">{sheet.anzahl}</p>
@@ -106,7 +120,7 @@ export function ChordsheetsSection({ chordsheets }: ChordsheetsSectionProps) {
 									{index < chordsheets.length - 1 && (
 										<div className="h-px w-full bg-[#cfcfcf] mt-4 md:mt-5 lg:mt-[20px]" />
 									)}
-								</div>
+								</motion.div>
 							))}
 						</div>
 					</div>

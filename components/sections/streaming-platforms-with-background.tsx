@@ -2,7 +2,9 @@
 
 import { useRef, useEffect, useState } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { StreamingPlatforms } from '@/components/ui/streaming-platforms'
+import { RevealSection } from '@/components/animations/reveal-section'
 
 export function StreamingPlatformsWithBackground() {
 	const logosRef = useRef<HTMLDivElement>(null)
@@ -57,32 +59,40 @@ export function StreamingPlatformsWithBackground() {
 	}, [])
 
 	return (
-		<div 
-			className="relative flex items-center justify-center w-full" 
-			style={{ 
-				paddingTop: `${containerPadding}px`,
-				paddingBottom: `${containerPadding}px`
-			}}
-		>
-			{/* Background Image - zentriert hinter den Logos */}
-			<div className="absolute flex items-center justify-center pointer-events-none">
-				<Image
-					src="/images/color-2.png"
-					alt=""
-					width={imageSize}
-					height={imageSize}
-					className="object-contain"
-					style={{ 
-						width: `${imageSize}px`, 
-						height: `${imageSize}px`
-					}}
-					aria-hidden="true"
-				/>
+		<RevealSection>
+			<div 
+				className="relative flex items-center justify-center w-full" 
+				style={{ 
+					paddingTop: `${containerPadding}px`,
+					paddingBottom: `${containerPadding}px`
+				}}
+			>
+				{/* Background Image - zentriert hinter den Logos */}
+				<motion.div
+					initial={{ scale: 0.8, opacity: 0 }}
+					whileInView={{ scale: 1, opacity: 1 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+					className="absolute flex items-center justify-center pointer-events-none"
+				>
+					<Image
+						src="/images/color-2.png"
+						alt=""
+						width={imageSize}
+						height={imageSize}
+						className="object-contain"
+						style={{ 
+							width: `${imageSize}px`, 
+							height: `${imageSize}px`
+						}}
+						aria-hidden="true"
+					/>
+				</motion.div>
+				{/* Streaming Platforms - zentriert */}
+				<div ref={logosRef} className="relative z-10">
+					<StreamingPlatforms size="large" backgroundColor />
+				</div>
 			</div>
-			{/* Streaming Platforms - zentriert */}
-			<div ref={logosRef} className="relative z-10">
-				<StreamingPlatforms size="large" backgroundColor />
-			</div>
-		</div>
+		</RevealSection>
 	)
 }

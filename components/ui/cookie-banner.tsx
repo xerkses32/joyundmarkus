@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useCookieConsent } from '@/lib/hooks/use-cookie-consent'
 import Link from 'next/link'
 
@@ -18,7 +19,14 @@ export function CookieBanner() {
 	}
 
 	return (
-		<div className="fixed bottom-0 left-0 right-0 z-[100] bg-[#ecebe6] border-t-[3px] border-[#1C1C1C] shadow-lg">
+		<AnimatePresence>
+			<motion.div
+				initial={{ y: 100, opacity: 0 }}
+				animate={{ y: 0, opacity: 1 }}
+				exit={{ y: 100, opacity: 0 }}
+				transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+				className="fixed bottom-0 left-0 right-0 z-[100] bg-[#ecebe6] border-t-[3px] border-[#1C1C1C] shadow-lg"
+			>
 			<div className="w-full max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 py-4 md:py-6">
 				<div className="flex flex-col gap-4 md:gap-6">
 					{/* Header */}
@@ -141,7 +149,8 @@ export function CookieBanner() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</motion.div>
+		</AnimatePresence>
 	)
 }
 

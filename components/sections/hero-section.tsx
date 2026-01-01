@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
 import { SupportButton } from '@/components/ui/support-button'
 
@@ -84,11 +85,14 @@ export function HeroSection({ featuredSong }: HeroSectionProps) {
 			</div>
 
 			{/* ALLES BEUGT SICH Text */}
-			<div 
+			<motion.div
 				ref={containerRef}
+				initial={{ opacity: 0, scale: 0.95 }}
+				animate={{ opacity: 1, scale: 1 }}
+				transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
 				className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-[5] w-full px-4 overflow-hidden"
 			>
-				<h2 
+				<h2
 					className="font-darker-grotesque font-black text-[#ecebe6] leading-none text-center"
 					style={{ fontSize }}
 				>
@@ -96,7 +100,7 @@ export function HeroSection({ featuredSong }: HeroSectionProps) {
 					<span ref={beugtRef} className="block whitespace-nowrap">BEUGT</span>
 					<span className="block whitespace-nowrap">SICH</span>
 				</h2>
-			</div>
+			</motion.div>
 
 			{/* Joy ausgeschnitten overlay */}
 			<div className="absolute h-full left-0 top-0 w-full z-10">
@@ -119,11 +123,26 @@ export function HeroSection({ featuredSong }: HeroSectionProps) {
 			{/* Content Container */}
 			<div className="absolute inset-0 flex items-center justify-center p-2 md:p-4 lg:p-6 z-30">
 				{/* Album Cover and Badge */}
-				<div className="flex flex-col items-center gap-3 md:gap-4">
-					<p className="font-darker-grotesque font-bold text-[#ecebe6] text-[16px] md:text-[18px] lg:text-[20px] uppercase tracking-wider">
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+					className="flex flex-col items-center gap-3 md:gap-4"
+				>
+					<motion.p
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.5 }}
+						className="font-darker-grotesque font-bold text-[#ecebe6] text-[16px] md:text-[18px] lg:text-[20px] uppercase tracking-wider"
+					>
 						UNSERE NEUE SINGLE
-					</p>
-					<div className="relative size-[150px] md:size-[200px] lg:size-[265px] shrink-0">
+					</motion.p>
+					<motion.div
+						initial={{ opacity: 0, scale: 0.9 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+						className="relative size-[150px] md:size-[200px] lg:size-[265px] shrink-0"
+					>
 						<Image
 							src={albumCover}
 							alt="Alles beugt sich album cover"
@@ -131,8 +150,13 @@ export function HeroSection({ featuredSong }: HeroSectionProps) {
 							className="object-cover rounded-lg shadow-lg"
 							sizes="(max-width: 768px) 150px, (max-width: 1024px) 200px, 265px"
 						/>
-					</div>
-					<div className="flex gap-3 md:gap-4 items-center justify-center flex-wrap">
+					</motion.div>
+					<motion.div
+						initial={{ opacity: 0, y: 10 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+						className="flex gap-3 md:gap-4 items-center justify-center flex-wrap"
+					>
 						<a
 							href="https://open.spotify.com/intl-de/track/0snv4gtgkdzX02W50XJoja?si=906e2c3a8c664d48"
 							aria-label="Alles Beugt Sich auf Spotify anhören"
@@ -145,8 +169,8 @@ export function HeroSection({ featuredSong }: HeroSectionProps) {
 						<div className="scale-75 md:scale-75 lg:scale-80">
 							<SupportButton />
 						</div>
-					</div>
-				</div>
+					</motion.div>
+				</motion.div>
 			</div>
 		</div>
 	)

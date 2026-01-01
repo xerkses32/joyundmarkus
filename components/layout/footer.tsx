@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { FadeIn } from '@/components/animations/fade-in'
 import { StreamingPlatforms } from '@/components/ui/streaming-platforms'
 import { SupportButton } from '@/components/ui/support-button'
 
@@ -10,15 +13,17 @@ export function Footer({}: FooterProps) {
 			<div className="w-full max-w-[1440px] mx-auto px-2 md:px-4 lg:px-8 py-8 md:py-12 lg:py-16">
 				<div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start justify-between">
 					{/* Left Side: Logo and Social Media Icons */}
-					<div className="flex flex-col gap-6 w-full lg:w-auto">
-						<h2 className="font-darker-grotesque font-black text-[24px] md:text-[32px] text-[#ecebe6]">
-							JOY&MARKUS
-						</h2>
-						<StreamingPlatforms size="small" />
-						<div className="flex items-center justify-start scale-50 md:scale-60 lg:scale-75 origin-left">
-							<SupportButton />
+					<FadeIn delay={0.2}>
+						<div className="flex flex-col gap-6 w-full lg:w-auto">
+							<h2 className="font-darker-grotesque font-black text-[24px] md:text-[32px] text-[#ecebe6]">
+								JOY&MARKUS
+							</h2>
+							<StreamingPlatforms size="small" />
+							<div className="flex items-center justify-start scale-50 md:scale-60 lg:scale-75 origin-left">
+								<SupportButton />
+							</div>
 						</div>
-					</div>
+					</FadeIn>
 
 					{/* Right Side: Navigation Links */}
 					<div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 w-full lg:w-auto">

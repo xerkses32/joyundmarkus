@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { HamburgerIcon } from '@/components/ui/hamburger-icon'
 import { cn } from '@/lib/utils'
 
@@ -91,7 +92,7 @@ export function Navigation({ className }: NavigationProps) {
 					className="hidden md:flex items-center justify-center px-[20px] lg:px-[30px] py-[10px] rounded-[100px] flex-1 gap-[40px] md:gap-[50px] lg:gap-[100px] min-w-0"
 				>
 					{navItems.map((item, index) => (
-						<button
+						<motion.button
 							key={item}
 							ref={(el) => {
 								buttonRefs.current[index] = el
@@ -102,21 +103,35 @@ export function Navigation({ className }: NavigationProps) {
 									handleScrollTo(item)
 								}
 							}}
+							whileHover={{ scale: 1.05 }}
+							whileTap={{ scale: 0.98 }}
+							transition={{
+								type: 'spring',
+								stiffness: 400,
+								damping: 25,
+							}}
 							className="font-darker-grotesque font-black text-[16px] lg:text-[20px] text-[#1C1C1C] hover:opacity-70 transition-opacity relative z-10"
 							aria-label={`Navigate to ${item}`}
 							tabIndex={0}
 						>
 							{item}
-						</button>
+						</motion.button>
 					))}
 				</div>
 				
 				{/* Instagram Icon - rechts */}
 				<div className="hidden md:flex items-center justify-end flex-shrink-0 ml-4">
-					<a
+					<motion.a
 						href="https://www.instagram.com/joyundmarkus"
 						target="_blank"
 						rel="noopener noreferrer"
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.95 }}
+						transition={{
+							type: 'spring',
+							stiffness: 400,
+							damping: 25,
+						}}
 						className="hover:opacity-70 transition-opacity"
 						aria-label="Instagram"
 					>
@@ -127,7 +142,7 @@ export function Navigation({ className }: NavigationProps) {
 							height={24}
 							className="w-6 h-6"
 						/>
-					</a>
+					</motion.a>
 				</div>
 				
 				{/* Vertical dividers - positioned absolutely from top border to bottom border of nav */}
@@ -155,10 +170,17 @@ export function Navigation({ className }: NavigationProps) {
 						<HamburgerIcon isOpen={isOpen} className="text-[#1C1C1C]" />
 					</button>
 					{/* Instagram Icon - rechts */}
-					<a
+					<motion.a
 						href="https://www.instagram.com/joyundmarkus"
 						target="_blank"
 						rel="noopener noreferrer"
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.95 }}
+						transition={{
+							type: 'spring',
+							stiffness: 400,
+							damping: 25,
+						}}
 						className="hover:opacity-70 transition-opacity w-10 flex items-center justify-end"
 						aria-label="Instagram"
 					>
@@ -169,7 +191,7 @@ export function Navigation({ className }: NavigationProps) {
 							height={24}
 							className="w-6 h-6"
 						/>
-					</a>
+					</motion.a>
 				</div>
 			</div>
 
